@@ -74,8 +74,8 @@ public class CameraFollow : MonoBehaviour {
 		public FocusArea(Bounds targetBounds, Vector2 size) {
 			left = targetBounds.center.x - size.x/2;
 			right = targetBounds.center.x + size.x/2;
-			bottom = targetBounds.min.y;
-			top = targetBounds.min.y + size.y;
+			bottom = targetBounds.min.y/2;
+			top = targetBounds.min.y + size.y/2;
 
 			velocity = Vector2.zero;
 			centre = new Vector2((left+right)/2,(top +bottom)/2);
