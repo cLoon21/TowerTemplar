@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 08bd410c3979b46a290e97a10aab26a7
+timeCreated: 1509073788
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Text Me One
+  fontNames:
+  - Text Me One
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
