@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KnightController : MonoBehaviour {
-
 	//intialize classes
 	private Rigidbody2D rigi;
 	Animator anim;
+
+	//deals with skeleton collision
+	bool touching = false;
+	float touchRadius = 0.4f;
+	public Transform touchCheck;
+	public LayerMask whatIsTouch;
 
 	//setting max speed & jump power
 	public float maxSpeed = 10f;
@@ -19,6 +24,12 @@ public class KnightController : MonoBehaviour {
 	float boundRadius = 0.4f;
 	public Transform boundsCheck;
 	public LayerMask whatIsBound;
+
+	//deals with portal
+	bool portaled = false;
+	float portalRadius = 0.5f;
+	public Transform portalCheck;
+	public LayerMask whatIsPortal;
 
 	//deals with ground
 	bool grounded = false;
@@ -76,8 +87,14 @@ public class KnightController : MonoBehaviour {
 			Application.LoadLevel ("Main_Menu");
 		}
 
+		//check if player is touching skeleton
+		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
+
 		//check if player is on ground
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+
+		//check if player is in portal
+		portaled = Physics2D.OverlapCircle (portalCheck.position, portalRadius, whatIsPortal);
 
 		//keypress gets horizontal axis and places into variable
 		float move = Input.GetAxis ("Horizontal");
@@ -89,8 +106,16 @@ public class KnightController : MonoBehaviour {
 		//update x axis
 		rigi.velocity = new Vector2(move * maxSpeed, rigi.velocity.y);
 
+		//update portal
+		if (Input.GetKeyDown (KeyCode.W) && portaled) {
+			Application.LoadLevel ("Main_Menu");
+		}
 
-
+		//skeleton destroy check
+		if (touching && attacking) {
+			Destroy (GameObject.FindWithTag ("Skeleton"));
+		}
+			
 		//double jump
 		if (!grounded && canDoubleJump && Input.GetKeyDown (KeyCode.W)) {
 			rigi.velocity = new Vector2 (move * maxSpeed, 0);
@@ -125,5 +150,10 @@ public class KnightController : MonoBehaviour {
 		//flips character
 		theScale.x *= -1;
 		transform.localScale = theScale;
+	}
+
+	//get knocked back
+	void OnCollisionExit2D(Collision2D col){
+		
 	}
 }
