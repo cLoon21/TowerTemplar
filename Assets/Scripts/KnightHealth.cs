@@ -34,7 +34,7 @@ public class KnightHealth : MonoBehaviour {
 		if (health > 0) {
 			health--;
 		} else if (health == 0) {
-			Application.LoadLevel ("Stage_One");
+			Application.LoadLevel ("Main_Menu");
 		}
 
 		beingDamaged = false;
