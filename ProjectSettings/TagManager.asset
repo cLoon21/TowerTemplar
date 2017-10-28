@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Edge
+  - Skeleton
+  - Portal
+  - EnemyAttack
   layers:
   - Default
   - TransparentFX
@@ -17,9 +21,9 @@ TagManager:
   - Obstacle
   - Bounds
   - AttackCheck
-  - 
-  - 
-  - 
+  - Enemy
+  - Portal
+  - EnemyAttack
   - 
   - 
   - 

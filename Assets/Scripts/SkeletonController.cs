@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class SkeletonController : MonoBehaviour {
 
+	public KnightHealth knightHealth;
+
 	//intialize classes
 	private Rigidbody2D rigi;
 	Animator anim;
 	public Transform player;
 	//public ConstantForce2D force;
+
+	//decrement knight health
+	bool touching = false;
+	float touchRadius = 0.4f;
+	public Transform touchCheck;
+	public LayerMask whatIsTouch;
 
 	//setting max speed
 	public float move = 5.0f;
@@ -46,6 +54,15 @@ public class SkeletonController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+
+		//check if player is touching skeleton
+		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
+
+		//skeleton decrement knight health
+		if (touching && attacking) {
+			knightHealth.DecrementHealth ();
+		}
+
 		anim.SetFloat ("Speed", Mathf.Abs (move)); 
 		rigi.velocity = new Vector2 (move * movementDirection, 0f);
 
@@ -78,7 +95,12 @@ public class SkeletonController : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Edge") {
-			Flip ();		}
+			Flip ();		
+		}
+		else if (col.gameObject.tag == "Player") {
+			Debug.Log ("He hit me");
+			knightHealth.DecrementHealth ();
+		}
 	}
 
 }
