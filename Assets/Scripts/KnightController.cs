@@ -73,7 +73,7 @@ public class KnightController : MonoBehaviour {
 		bounded = Physics2D.OverlapCircle (boundsCheck.position, boundRadius, whatIsBound);
 
 		if (bounded) {
-			Application.LoadLevel ("Stage_One");
+			Application.LoadLevel ("Main_Menu");
 		}
 
 		//check if player is on ground
