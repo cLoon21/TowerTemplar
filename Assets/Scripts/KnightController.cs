@@ -11,7 +11,14 @@ public class KnightController : MonoBehaviour {
 	//setting max speed & jump power
 	public float maxSpeed = 10f;
 	public float jumpForce = 0.5f;
-	public int jumpCount = 0;
+	public bool canDoubleJump = false;
+	public float move = 0;
+
+	//deals with bounds
+	bool bounded = false;
+	float boundRadius = 0.4f;
+	public Transform boundsCheck;
+	public LayerMask whatIsBound;
 
 	//deals with ground
 	bool grounded = false;
@@ -62,6 +69,13 @@ public class KnightController : MonoBehaviour {
 		}
 		anim.SetBool ("Attack", attacking);
 
+		//check if player is out of bound
+		bounded = Physics2D.OverlapCircle (boundsCheck.position, boundRadius, whatIsBound);
+
+		if (bounded) {
+			Application.LoadLevel ("Stage_One");
+		}
+
 		//check if player is on ground
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
@@ -75,10 +89,14 @@ public class KnightController : MonoBehaviour {
 		//update x axis
 		rigi.velocity = new Vector2(move * maxSpeed, rigi.velocity.y);
 
-		//updating y axis (jumping)
-		if ((grounded && Input.GetKeyDown (KeyCode.W)) || (grounded && Input.GetKeyDown(KeyCode.UpArrow))) {
+
+
+		//double jump
+		if (!grounded && canDoubleJump && Input.GetKeyDown (KeyCode.W)) {
+			rigi.velocity = new Vector2 (move * maxSpeed, 0);
 			anim.SetBool ("Ground", false);
 			rigi.AddForce (Vector2.up * jumpForce);
+			canDoubleJump = false;
 		}
 			
 		//facing & switching direction
@@ -88,6 +106,16 @@ public class KnightController : MonoBehaviour {
 			Flip ();
 		}
 
+	}
+
+	void Update () {
+		//updating y axis (jumping)
+		if ((grounded && Input.GetKeyDown (KeyCode.W)) || (grounded && Input.GetKeyDown(KeyCode.UpArrow))) {
+			rigi.velocity = new Vector2 (move * maxSpeed, 0);
+			anim.SetBool ("Ground", false);
+			rigi.AddForce (Vector2.up * jumpForce);
+			canDoubleJump = true;
+		}
 	}
 
 	//function controls facing and switching direction
