@@ -112,7 +112,16 @@ public class KnightController : MonoBehaviour {
 
 		//update portal
 		if (Input.GetKeyDown (KeyCode.W) && portaled) {
-			Application.LoadLevel ("Stage_Two");
+			if(Application.loadedLevelName == "Stage_One"){
+				Application.LoadLevel ("Stage_Two");
+			}else if (Application.loadedLevelName == "Stage_Two") {
+				Application.LoadLevel ("Stage_Three");
+			}else if (Application.loadedLevelName == "Stage_Three") {
+				Application.LoadLevel ("Main_Menu");
+			}else if (Application.loadedLevelName == "Treasure_Room") {
+				Application.LoadLevel ("Main_Menu");
+			}
+
 		}
 
 		//skeleton destroy check
