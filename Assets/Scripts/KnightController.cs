@@ -46,6 +46,10 @@ public class KnightController : MonoBehaviour {
 	private float attackCoolDown = 0.3f;
 	public Collider2D attackTrigger;
 
+	//deals with edges
+	public BoxCollider2D EdgeCheck;
+	public BoxCollider2D EdgeTrigger;
+
 
 	private void Awake(){
 		//getting component of collision box

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SkeletonController : MonoBehaviour {
 
+	//string scene = Application.LoadedLevelName;
+
 	public KnightHealth knightHealth;
 
 	//intialize classes
@@ -36,6 +38,12 @@ public class SkeletonController : MonoBehaviour {
 	public BoxCollider2D EdgeCheck;
 	public BoxCollider2D EdgeTrigger;
 
+	//deals with ground
+	bool grounded = false;
+	float groundRadius = 0.2f;
+	public Transform groundCheck;
+	public LayerMask whatIsGround;
+
 	/*private void Awake(){
 		//getting component of collision box
 		attackTrigger.enabled = false;
@@ -55,8 +63,17 @@ public class SkeletonController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+		if(scene
+
 		//check if player is touching skeleton
 		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
+
+		//check if player is on ground
+		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+
+		if (!grounded) {
+			move = 0.0f;
+		}
 
 		//skeleton decrement knight health
 		if (touching && attacking) {
