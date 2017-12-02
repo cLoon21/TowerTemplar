@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SkeletonController : MonoBehaviour {
 
-	//string scene = Application.LoadedLevelName;
-
 	public KnightHealth knightHealth;
 
 	//intialize classes
@@ -44,6 +42,12 @@ public class SkeletonController : MonoBehaviour {
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 
+	//deals with boss camera
+	bool bossBounded = false;
+	float bossBoundedRadius = 0.2f;
+	public Transform bossBoundCheck;
+	public LayerMask whatIsBossBound;
+
 	/*private void Awake(){
 		//getting component of collision box
 		attackTrigger.enabled = false;
@@ -56,6 +60,9 @@ public class SkeletonController : MonoBehaviour {
 		EdgeCheck = GetComponent<BoxCollider2D> ();
 		EdgeTrigger = GetComponent<BoxCollider2D> ();
 		Flip ();
+		if (Application.loadedLevelName == "Stage_Three") {
+			rigi.gravityScale = 0;
+		}
 		//force = GetComponent<ConstantForce2D> ();
 		//constantForce.relativeForce = Vector2 (5, 0);
 	}
@@ -63,11 +70,18 @@ public class SkeletonController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+		//check if player is in boss area
+		bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
+
 		//check if player is touching skeleton
 		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
 
 		//check if player is on ground
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+
+		if (bossBounded) {
+			rigi.gravityScale = 6;
+		}
 
 		if (!grounded) {
 			move = 0.0f;

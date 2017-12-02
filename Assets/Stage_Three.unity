@@ -559,6 +559,10 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 512
+  bossBoundCheck: {fileID: 749191843}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!61 &183103101
 BoxCollider2D:
   m_ObjectHideFlags: 0
