@@ -63,8 +63,6 @@ public class SkeletonController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		if(scene
-
 		//check if player is touching skeleton
 		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
 
