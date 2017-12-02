@@ -88,7 +88,13 @@ public class KnightController : MonoBehaviour {
 		bounded = Physics2D.OverlapCircle (boundsCheck.position, boundRadius, whatIsBound);
 
 		if (bounded) {
-			Application.LoadLevel ("Main_Menu");
+			if(Application.loadedLevelName == "Stage_One"){
+				Application.LoadLevel ("Stage_One");
+			}else if (Application.loadedLevelName == "Stage_Two") {
+				Application.LoadLevel ("Stage_Two");
+			}else if (Application.loadedLevelName == "Stage_Three") {
+				Application.LoadLevel ("Stage_Three");
+			}
 		}
 
 		//check if player is touching skeleton
