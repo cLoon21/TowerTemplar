@@ -8,6 +8,7 @@ TagManager:
   - Skeleton
   - Portal
   - EnemyAttack
+  - BossBound
   layers:
   - Default
   - TransparentFX
@@ -24,8 +25,8 @@ TagManager:
   - Enemy
   - Portal
   - EnemyAttack
-  - 
-  - 
+  - BossBound
+  - BossBoundCheck
   - 
   - 
   - 
