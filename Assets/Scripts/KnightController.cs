@@ -58,7 +58,7 @@ public class KnightController : MonoBehaviour {
 		//getting component of animation controller
 		anim = GetComponent<Animator> ();
 	}
-	
+
 	// Update is called once per frame
 	void FixedUpdate () {
 
@@ -108,14 +108,14 @@ public class KnightController : MonoBehaviour {
 
 		//update portal
 		if (Input.GetKeyDown (KeyCode.W) && portaled) {
-			Application.LoadLevel ("Main_Menu");
+			Application.LoadLevel ("Stage_Two");
 		}
 
 		//skeleton destroy check
 		if (touching && attacking) {
 			Destroy (GameObject.FindWithTag ("Skeleton"));
 		}
-			
+
 		//double jump
 		if (!grounded && canDoubleJump && Input.GetKeyDown (KeyCode.W)) {
 			rigi.velocity = new Vector2 (move * maxSpeed, 0);
@@ -123,7 +123,7 @@ public class KnightController : MonoBehaviour {
 			rigi.AddForce (Vector2.up * jumpForce);
 			canDoubleJump = false;
 		}
-			
+
 		//facing & switching direction
 		if (move > 0 && !faceRight) {
 			Flip ();
@@ -154,6 +154,6 @@ public class KnightController : MonoBehaviour {
 
 	//get knocked back
 	void OnCollisionExit2D(Collision2D col){
-		
+
 	}
 }

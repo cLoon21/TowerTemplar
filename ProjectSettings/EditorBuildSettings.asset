@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Controls_Menu.unity
     guid: a4bbc5d69c7154629963c7c4252010d8
+  - enabled: 1
+    path: Assets/Stage_Two.unity
+    guid: 5772ff57319d84394a09dd4972e27c35
+  - enabled: 1
+    path: Assets/Stage_Three.unity
+    guid: d7e724ae9e1d64a618ba6ab7eefca6ca
