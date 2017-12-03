@@ -10,6 +10,12 @@ public class KnightHealth : MonoBehaviour {
 	public bool beingDamaged = false;
 	public bool damageCollide = false;
 
+	//deals with boss camera
+	bool bossBounded = false;
+	float bossBoundedRadius = 0.2f;
+	public Transform bossBoundCheck;
+	public LayerMask whatIsBossBound;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -18,6 +24,15 @@ public class KnightHealth : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//check if player is in boss area
+		bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
+
+		if (bossBounded) {
+			transform.localScale = new Vector3 (1.5f, 1.5f, 1);
+			transform.localPosition = new Vector3 (-9, 6.5f, 0.3f);
+		}
+
+
 		/*
 		if ("COLLISION" && !beingDamaged) {
 			beingDamaged = true;
@@ -40,6 +55,19 @@ public class KnightHealth : MonoBehaviour {
 
 		Debug.Log ("Ouch");
 		health--;
+		anim.SetInteger ("Health", health);
+		if (health <= 0) {
+			Debug.Log ("Im dead");
+			Application.LoadLevel ("Main_Menu");
+		}
+	}
+
+	public void DecrementHealthFireball(){
+
+		StartCoroutine (delayTime (10));
+
+		Debug.Log ("Ouch");
+		health -= 12;
 		anim.SetInteger ("Health", health);
 		if (health <= 0) {
 			Debug.Log ("Im dead");

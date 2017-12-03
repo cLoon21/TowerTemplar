@@ -9,6 +9,8 @@ TagManager:
   - Portal
   - EnemyAttack
   - BossBound
+  - Dragon
+  - Fireball
   layers:
   - Default
   - TransparentFX
@@ -27,9 +29,9 @@ TagManager:
   - EnemyAttack
   - BossBound
   - BossBoundCheck
-  - 
-  - 
-  - 
+  - Dragon
+  - Fireball
+  - Obstacle2
   - 
   - 
   - 
