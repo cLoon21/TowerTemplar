@@ -11,19 +11,30 @@ public class CameraFollow : MonoBehaviour {
 	public float smoothSpeed = 0.15f;
 	public Vector3 offset;
 
+
+	public float xMin;
+	public float xMax;
+	public float yMin;
+	public float yMax;
+	public float cameraSize;
+
 	//deals with boss camera
 	bool bossBounded = false;
 	float bossBoundedRadius = 0.2f;
 	public Transform bossBoundCheck;
 	public LayerMask whatIsBossBound;
 
-	void FixedUpdate (){
+	void Update(){
 
-		//check if player is in boss area
-		bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
+		if (Application.loadedLevelName == "Stage_Three") {
+			//check if player is in boss area
+			bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
 
-		if (bossBounded) {
-			camera.orthographicSize = 13.5f;
+			//change camera position
+			if (bossBounded) {
+				camera.orthographicSize = cameraSize;
+				transform.position = new Vector3 (Mathf.Clamp (target.position.x, xMin, xMax), Mathf.Clamp (target.position.y, yMin, yMax));
+			}
 		}
 	}
 
@@ -32,6 +43,5 @@ public class CameraFollow : MonoBehaviour {
 		Vector3 desiredPos = target.position + offset;
 		Vector3 smoothedPos = Vector3.Lerp (transform.position, desiredPos, smoothSpeed);
 		transform.position = smoothedPos;
-
 	}
 }
