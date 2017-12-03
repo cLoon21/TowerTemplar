@@ -7,11 +7,19 @@ public class KnightController : MonoBehaviour {
 	private Rigidbody2D rigi;
 	Animator anim;
 
+	public float dragonHealth;
+
 	//deals with skeleton collision
 	bool touching = false;
 	float touchRadius = 0.4f;
 	public Transform touchCheck;
 	public LayerMask whatIsTouch;
+
+	//deals with dragon collision
+	bool touchingDragon = false;
+	float touchDragonRadius = 0.4f;
+	public Transform touchDragonCheck;
+	public LayerMask whatIsDragonTouch;
 
 	//setting max speed & jump power
 	public float maxSpeed = 10f;
@@ -94,6 +102,9 @@ public class KnightController : MonoBehaviour {
 		//check if player is touching skeleton
 		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
 
+		//check if player is touching dragon
+		touchingDragon = Physics2D.OverlapCircle (touchDragonCheck.position, touchDragonRadius, whatIsDragonTouch);
+
 		//check if player is on ground
 		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
 
@@ -118,6 +129,15 @@ public class KnightController : MonoBehaviour {
 		//skeleton destroy check
 		if (touching && attacking) {
 			Destroy (GameObject.FindWithTag ("Skeleton"));
+		}
+
+		if (touchingDragon && attacking) {
+			if (dragonHealth > 0) {
+				dragonHealth--;
+			} else {
+				Destroy (GameObject.FindWithTag ("Dragon"));
+			}
+
 		}
 
 		//double jump
