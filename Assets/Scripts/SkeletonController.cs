@@ -70,22 +70,21 @@ public class SkeletonController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		//check if player is in boss area
-		bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
+		if (Application.loadedLevelName == "Stage_Three") {
+			//check if player is in boss area
+			bossBounded = Physics2D.OverlapCircle (bossBoundCheck.position, bossBoundedRadius, whatIsBossBound);
+			//check if player is on ground
+			grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
+			if (bossBounded) {
+				rigi.gravityScale = 6;
+			}
+			if (!grounded) {
+				move = 0.0f;
+			}
+		}
 
 		//check if player is touching skeleton
 		touching = Physics2D.OverlapCircle (touchCheck.position, touchRadius, whatIsTouch);
-
-		//check if player is on ground
-		grounded = Physics2D.OverlapCircle (groundCheck.position, groundRadius, whatIsGround);
-
-		if (bossBounded) {
-			rigi.gravityScale = 6;
-		}
-
-		if (!grounded) {
-			move = 0.0f;
-		}
 
 		//skeleton decrement knight health
 		if (touching && attacking) {
@@ -95,7 +94,7 @@ public class SkeletonController : MonoBehaviour {
 		anim.SetFloat ("Speed", Mathf.Abs (move)); 
 		rigi.velocity = new Vector2 (move * movementDirection, 0f);
 
-		if (Vector3.Distance (player.position, this.transform.position) < 7.5) {
+		if (Vector3.Distance (player.position, this.transform.position) < 2.5) {
 			move = 0f;
 			if (player.position.x - this.transform.position.x < 0 && movementDirection > 0) {
 				Flip ();

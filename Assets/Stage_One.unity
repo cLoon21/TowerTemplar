@@ -668,6 +668,14 @@ MonoBehaviour:
   attackTrigger: {fileID: 1508213751}
   EdgeCheck: {fileID: 0}
   EdgeTrigger: {fileID: 1887782849}
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &183103101
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1680,6 +1688,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackTrigger: {fileID: 1130803521}
+  EdgeCheck: {fileID: 0}
+  EdgeTrigger: {fileID: 0}
 --- !u!1 &875579032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,8 +1821,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 841526252}
+  camera: {fileID: 0}
   smoothSpeed: 0.15
   offset: {x: 0, y: 0, z: -10}
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1034113792
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,6 +1872,14 @@ MonoBehaviour:
   attackTrigger: {fileID: 1838660583}
   EdgeCheck: {fileID: 0}
   EdgeTrigger: {fileID: 1274953534}
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1034113794
 BoxCollider2D:
   m_ObjectHideFlags: 0
