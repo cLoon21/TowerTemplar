@@ -65,7 +65,6 @@ public class KnightController : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-
 		//update attacking
 		if (!attacking && Input.GetKeyDown (KeyCode.Space)) {
 			attacking = true;
