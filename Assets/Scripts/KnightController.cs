@@ -133,7 +133,7 @@ public class KnightController : MonoBehaviour {
 			}else if (Application.loadedLevelName == "Stage_Two") {
 				Application.LoadLevel ("Stage_Three");
 			}else if (Application.loadedLevelName == "Stage_Three") {
-				Application.LoadLevel ("Main_Menu");
+				Application.LoadLevel ("Treasure_Room");
 			}else if (Application.loadedLevelName == "Treasure_Room") {
 				Application.LoadLevel ("Main_Menu");
 			}
@@ -191,7 +191,6 @@ public class KnightController : MonoBehaviour {
 	}
 
 	//get knocked back
-	void OnCollisionExit2D(Collision2D col){
-
+	void OnCollisionEnter2D(Collision2D other){
 	}
 }

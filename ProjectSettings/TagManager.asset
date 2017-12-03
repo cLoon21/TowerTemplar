@@ -29,6 +29,7 @@ TagManager:
   - EnemyAttack
   - BossBound
   - BossBoundCheck
+  - Coin
   - Dragon
   - Fireball
   - Obstacle2
