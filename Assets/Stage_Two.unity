@@ -1313,6 +1313,14 @@ MonoBehaviour:
   attackTrigger: {fileID: 1597561436}
   EdgeCheck: {fileID: 0}
   EdgeTrigger: {fileID: 1957404544}
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &467043624
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2215,10 +2223,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d37b5859e51499e8e4f22f0dc42792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragonHealth: 0
   touchCheck: {fileID: 1130803520}
   whatIsTouch:
     serializedVersion: 2
     m_Bits: 4096
+  touchDragonCheck: {fileID: 1130803520}
+  whatIsDragonTouch:
+    serializedVersion: 2
+    m_Bits: 0
   maxSpeed: 10
   jumpForce: 800
   canDoubleJump: 1
@@ -2236,6 +2249,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   attackTrigger: {fileID: 1130803521}
+  EdgeCheck: {fileID: 0}
+  EdgeTrigger: {fileID: 0}
 --- !u!1 &865729519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,8 +2759,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 841526252}
+  camera: {fileID: 0}
   smoothSpeed: 0.15
   offset: {x: 0, y: 0, z: -10}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  cameraSize: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &992667931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2790,6 +2815,14 @@ MonoBehaviour:
   attackTrigger: {fileID: 1876378367}
   EdgeCheck: {fileID: 0}
   EdgeTrigger: {fileID: 744600673}
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &992667933
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4992,6 +5025,14 @@ MonoBehaviour:
   attackTrigger: {fileID: 25795589}
   EdgeCheck: {fileID: 0}
   EdgeTrigger: {fileID: 1374965406}
+  groundCheck: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!61 &1617979639
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6429,6 +6470,10 @@ MonoBehaviour:
   health: 100
   beingDamaged: 0
   damageCollide: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2089932337
 GameObject:
   m_ObjectHideFlags: 0

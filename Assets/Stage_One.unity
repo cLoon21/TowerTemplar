@@ -1667,10 +1667,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d37b5859e51499e8e4f22f0dc42792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dragonHealth: 0
   touchCheck: {fileID: 1130803520}
   whatIsTouch:
     serializedVersion: 2
     m_Bits: 4096
+  touchDragonCheck: {fileID: 1130803520}
+  whatIsDragonTouch:
+    serializedVersion: 2
+    m_Bits: 0
   maxSpeed: 10
   jumpForce: 800
   canDoubleJump: 1
@@ -1824,6 +1829,11 @@ MonoBehaviour:
   camera: {fileID: 0}
   smoothSpeed: 0.15
   offset: {x: 0, y: 0, z: -10}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  cameraSize: 0
   bossBoundCheck: {fileID: 0}
   whatIsBossBound:
     serializedVersion: 2
@@ -4433,6 +4443,10 @@ MonoBehaviour:
   health: 100
   beingDamaged: 0
   damageCollide: 0
+  bossBoundCheck: {fileID: 0}
+  whatIsBossBound:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &2089932337
 GameObject:
   m_ObjectHideFlags: 0

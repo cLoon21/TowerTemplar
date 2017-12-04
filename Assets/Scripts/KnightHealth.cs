@@ -58,7 +58,13 @@ public class KnightHealth : MonoBehaviour {
 		anim.SetInteger ("Health", health);
 		if (health <= 0) {
 			Debug.Log ("Im dead");
-			Application.LoadLevel ("Main_Menu");
+			if (Application.loadedLevelName == "Stage_One") {
+				Application.LoadLevel ("Stage_One");
+			} else if (Application.loadedLevelName == "Stage_Two") {
+				Application.LoadLevel ("Stage_Two");
+			} else if (Application.loadedLevelName == "Stage_Three") {
+				Application.LoadLevel ("Stage_Three");
+			}
 		}
 	}
 
@@ -71,7 +77,13 @@ public class KnightHealth : MonoBehaviour {
 		anim.SetInteger ("Health", health);
 		if (health <= 0) {
 			Debug.Log ("Im dead");
-			Application.LoadLevel ("Main_Menu");
+				if(Application.loadedLevelName == "Stage_One"){
+					Application.LoadLevel ("Stage_One");
+				}else if (Application.loadedLevelName == "Stage_Two") {
+					Application.LoadLevel ("Stage_Two");
+				}else if (Application.loadedLevelName == "Stage_Three") {
+					Application.LoadLevel ("Stage_Three");
+				}
 		}
 	}
 }

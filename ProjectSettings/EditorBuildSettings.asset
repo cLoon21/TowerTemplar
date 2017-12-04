@@ -20,3 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Stage_Three.unity
     guid: d7e724ae9e1d64a618ba6ab7eefca6ca
+  - enabled: 1
+    path: Assets/Treasure_Room.unity
+    guid: 12a5b76133dd54ca1a0e26b004a37913
